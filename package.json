@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "tape test.js | tap-spec"
+    "test": "tape test.js | tap-spec",
+    "dev": "nodemon src/server.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   "homepage": "https://github.com/fac-14/NDJS-node-autocompleter#readme",
   "dependencies": {},
   "devDependencies": {
+    "nodemon": "^1.18.3",
     "tap-spec": "^5.0.0",
     "tape": "^4.9.1"
   }
