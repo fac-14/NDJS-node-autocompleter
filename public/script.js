@@ -1,8 +1,10 @@
 var searchInput = document.getElementById("search");
 
 searchInput.addEventListener('keyup', function (e){
+    // keyup creates string which then gets encoded by urlCreator function and concatinated to url
     if(searchInput.value){
     console.log(searchInput.value);
+   console.log(urlCreator(window.location.href, searchInput.value));
     }
 });
 
@@ -20,4 +22,11 @@ function genericXHR (url, cb) {
     xhr.send();
 }
 
-// useless comment lol
+function urlCreator (url, str){
+    // takes url and adds a string value that corresponds to the user search input (str)
+    var searchUri = encodeURI(str);
+    console.log(url + "search/" + searchUri);
+    return url + searchUri;
+}
+
+// Testing Area
