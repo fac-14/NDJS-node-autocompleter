@@ -30,6 +30,9 @@ const publicHandler = (request, response) => {
   })
 }
 
+const queryHandler = (request, response) => {
+  
+}
 
 
 module.exports = { indexHandler, publicHandler};
