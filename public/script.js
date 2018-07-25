@@ -1,3 +1,4 @@
+
 var searchInput = document.getElementById("search");
 
 searchInput.addEventListener('keyup', function (e){
@@ -29,4 +30,3 @@ function urlCreator (url, str){
     return url + searchUri;
 }
 
-// Testing Area

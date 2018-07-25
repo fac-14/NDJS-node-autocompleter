@@ -7,7 +7,7 @@ const routes = (request, response) => {
     if (url === "/"){
         handlers.indexHandler(request, response);
     } else if (url.includes("/public/")) {
-        // need to handle publicRoute() stuff;
+        handlers.publicHandler(request, response);
     } else if (url.includes(search)) {
         // need to handle search query stuff
     } else {
