@@ -1,0 +1,24 @@
+{
+  "name": "NDJS-node-autocompleter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test.js | tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fac-14/NDJS-node-autocompleter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fac-14/NDJS-node-autocompleter/issues"
+  },
+  "homepage": "https://github.com/fac-14/NDJS-node-autocompleter#readme",
+  "dependencies": {
+    "tap-spec": "^5.0.0",
+    "tape": "^4.9.1"
+  }
+}
