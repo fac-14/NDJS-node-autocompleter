@@ -19,3 +19,5 @@ function genericXHR (url, cb) {
     xhr.open("GET", url, true);
     xhr.send();
 }
+
+// useless comment lol
