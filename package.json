@@ -18,7 +18,9 @@
     "url": "https://github.com/fac-14/NDJS-node-autocompleter/issues"
   },
   "homepage": "https://github.com/fac-14/NDJS-node-autocompleter#readme",
-  "dependencies": {},
+  "dependencies": {
+    "mime-types": "^2.1.19"
+  },
   "devDependencies": {
     "nodemon": "^1.18.3",
     "tap-spec": "^5.0.0",
