@@ -13,7 +13,6 @@ function genericXHR (url, cb) {
     xhr.onreadystatechange = function () {
         if(xhr.readyState === 4 && xhr.status === 200) {
             var parsedObj = JSON.parse(xhr.responseText);
-            console.log(parsedObj)
             return cb(parsedObj);
         } else if (xhr.readyState === 4 && xhr.status != 200) {
             console.log("sorry XHR unavailable");
@@ -29,6 +28,30 @@ function urlCreator (url, str){
     return url + "search/" + searchUri;
 }
 
-function callback() {
-console.log("testing XHR URL BLURP");
+function callback(obj) {
+  // create array with limited length
+  var array = createLimitedArray(obj);
+  // convert array to html
+  var html = constructDataList(array);
+    // append html to input field
+
+  console.log(array);
+}
+
+function createLimitedArray(obj){
+  // create an empty array
+  var limitedArray = Object.keys(obj);
+  // array with limited length
+  if (limitedArray.length > 5) {
+    limitedArray = limitedArray.slice(0,5);
+  } else if (limitedArray.length === 0) {
+    // if object is empty
+    limitedArray.push('No matches found');
+  }
+  return limitedArray;
+}
+
+
+function constructDataList(arr) {
+  // data list items appended to the
 }
