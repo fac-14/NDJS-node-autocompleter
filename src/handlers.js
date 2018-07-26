@@ -32,6 +32,18 @@ const publicHandler = (request, response) => {
   });
 };
 
-const queryHandler = (request, response) => {};
+const queryHandler = (request, response) => {
+//check what is coming through ("/search/input")
+  console.log(request.url)
+  let query = request.url.split('search/')[1];
+  console.log(query)
+  response.end()
+// extract the query from the url
 
-module.exports = { indexHandler, publicHandler };
+// get infomation form json
+
+// return a new object, send to client
+
+};
+
+module.exports = { indexHandler, publicHandler, queryHandler };
