@@ -1,6 +1,7 @@
 var datalist = document.getElementById("autocomplete");
 var searchInput = document.getElementById("search");
 var inputForm = document.getElementById("input-form");
+var quoteDisplay = document.getElementById("quote-display");
 var globalObj = {};
 
 searchInput.addEventListener('keyup', function (e){
@@ -10,12 +11,23 @@ searchInput.addEventListener('keyup', function (e){
     }
 });
 
+// Listen for submit, then render relevant info (as second callback)
 inputForm.addEventListener("submit", function(e){
     e.preventDefault();
     var key = e.target[0].value
     var infoToRender = globalObj[key]
-    console.log(infoToRender);
+    renderQuotes(infoToRender)
 })
+
+// Render function
+function renderQuotes(arr){
+    quoteDisplay.innerText = "";
+    arr.forEach(function(quote){
+        var para = document.createElement("p")
+        para.textContent = quote;
+        quoteDisplay.appendChild(para);
+    })
+}
 
 function genericXHR (url, cb) {
     var xhr = new XMLHttpRequest(url, cb);
