@@ -31,11 +31,15 @@ header {
 }
 
 #quote-display {
-
+ 
 }
 
-
 h1 {
-  color: green;
+  color: white;
+  padding: 5px 10px;
+  border: 7px solid red;
+  background-color: blue;
+  mix-blend-mode: color-burn;
   text-transform: uppercase;
+
 }
