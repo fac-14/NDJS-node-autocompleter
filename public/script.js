@@ -1,5 +1,7 @@
 var datalist = document.getElementById("autocomplete");
 var searchInput = document.getElementById("search");
+var inputForm = document.getElementById("input-form");
+var globalObj = {};
 
 searchInput.addEventListener('keyup', function (e){
     // keyup creates string which then gets encoded by urlCreator function and concatinated to url
@@ -8,11 +10,19 @@ searchInput.addEventListener('keyup', function (e){
     }
 });
 
+inputForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    var key = e.target[0].value
+    var infoToRender = globalObj[key]
+    console.log(infoToRender);
+})
+
 function genericXHR (url, cb) {
     var xhr = new XMLHttpRequest(url, cb);
     xhr.onreadystatechange = function () {
         if(xhr.readyState === 4 && xhr.status === 200) {
             var parsedObj = JSON.parse(xhr.responseText);
+            globalObj = parsedObj;
             return cb(parsedObj);
         } else if (xhr.readyState === 4 && xhr.status != 200) {
             console.log("sorry XHR unavailable");
@@ -42,11 +52,9 @@ function createLimitedArray(obj){
   var limitedArray = Object.keys(obj);
   // array with limited length
   if (limitedArray.length > 5) {
-    console.log("length greater than 5!")
     limitedArray = limitedArray.slice(0,5);
   } else if (limitedArray.length === 0) {
     // if object is empty
-    console.log('else if')
     limitedArray.push('No matches found');
   }
   return limitedArray;
@@ -63,6 +71,5 @@ function constructDataList(arr) {
     option.value = item;
     // data list items appended to the datalist element
     datalist.appendChild(option);
-    console.log(item);
   })
 }
