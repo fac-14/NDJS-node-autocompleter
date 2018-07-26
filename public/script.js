@@ -20,6 +20,7 @@ inputField.addEventListener("input", function(e) {
     if( globalObj[e.target.value] !== undefined ) {
         var infoToRender = globalObj[e.target.value]
         renderQuotes(infoToRender)
+        inputField.blur();
     } ;
 });
 
