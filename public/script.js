@@ -3,6 +3,7 @@ var searchInput = document.getElementById("search");
 var inputForm = document.getElementById("input-form");
 var inputField = document.getElementById("search");
 var quoteDisplay = document.getElementById("quote-display");
+var speechDiv = document.getElementById("speech");
 var globalObj = {};
 
 searchInput.addEventListener('keyup', function (e){
@@ -42,6 +43,7 @@ function renderQuotes(arr){
     })
 }
 
+// API call
 function genericXHR (url, cb) {
     var xhr = new XMLHttpRequest(url, cb);
     xhr.onreadystatechange = function () {
@@ -100,3 +102,44 @@ function constructDataList(arr) {
     datalist.appendChild(option);
   })
 }
+
+// Speech synthesis!
+
+if(SpeechSynthesisUtterance && SpeechSynthesisUtterance){
+    console.log("Speech synthesis is possible in this browser!")
+
+    // Create and display "speech" button here. Give it an ID
+    var speechBtn = document.createElement("button");
+    speechBtn.id = "speechbtn";
+    speechBtn.innerText = "Make me speak!";
+    speech.appendChild(speechBtn);
+
+    // Add event listener to speech button
+    document.getElementById("speechbtn").addEventListener("click", randomSpeech);
+
+    // Callback function to be put on speech button event listener:
+    // Choose random item from array of quotes and read it out
+    function randomSpeech(){
+        // Array of things to say
+        var possibleSpeechArr = Object.values(globalObj);
+
+
+        if(possibleSpeechArr.length > 0){
+            console.log(possibleSpeechArr);
+            console.log(possibleSpeechArr[0][0])
+            var msg = new SpeechSynthesisUtterance(possibleSpeechArr[0]);
+            console.log("there is stuff to say")
+        } else {
+            var msg = new SpeechSynthesisUtterance("I have nothing to say. For once...")
+            console.log("Nothing to say")
+        }
+
+        window.speechSynthesis.speak(msg);
+    }
+
+// This only runs if speech synth API not available
+} else {
+    console.log("No speech synthesis available in this browser. Sorry!")
+}
+
+// End of speech synthesis section
