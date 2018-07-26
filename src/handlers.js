@@ -37,7 +37,7 @@ const queryHandler = (request, response) => {
 //check what is coming through ("/search/input")
 // console.log(request.url)
 // extract the query from the url
-let query = request.url.split('search/')[1];
+let query = decodeURIComponent(request.url.split('search/')[1]);
 console.log(query)
 // get information from json (alreday an object)
 const autocomplete = filteredObject(searchJSON(query, data));

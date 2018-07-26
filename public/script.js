@@ -24,7 +24,7 @@ function genericXHR (url, cb) {
 
 function urlCreator (url, str){
     // takes url and adds a string value that corresponds to the user search input (str)
-    var searchUri = encodeURI(str);
+    var searchUri = encodeURIComponent(str);
     return url + "search/" + searchUri;
 }
 
