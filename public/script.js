@@ -34,8 +34,7 @@ function callback(obj) {
   // convert array to html
   var html = constructDataList(array);
     // append html to input field
-
-  console.log(array);
+    console.log(array);
 }
 
 function createLimitedArray(obj){
@@ -53,5 +52,7 @@ function createLimitedArray(obj){
 
 
 function constructDataList(arr) {
-  // data list items appended to the
+  // 
+  // data list items appended to the datalist element
+
 }
