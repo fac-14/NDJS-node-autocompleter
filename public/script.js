@@ -15,7 +15,10 @@ searchInput.addEventListener('keyup', function (e){
 inputForm.addEventListener("submit", function(e){
     e.preventDefault();
     var key = e.target[0].value
+    console.log(key);
+
     var infoToRender = globalObj[key]
+    console.log(infoToRender);
     renderQuotes(infoToRender)
 })
 
@@ -47,6 +50,7 @@ function genericXHR (url, cb) {
 function urlCreator (url, str){
     // takes url and adds a string value that corresponds to the user search input (str)
     var searchUri = encodeURIComponent(str);
+
     return url + "search/" + searchUri;
 }
 

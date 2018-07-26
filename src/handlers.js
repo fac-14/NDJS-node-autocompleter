@@ -23,7 +23,7 @@ const indexHandler = (request, response) => {
 const publicHandler = (request, response) => {
   response.writeHead(200, mime.lookup(request.url));
   fs.readFile(path.join(__dirname, "..", request.url), (err, file) => {
-    console.log(file);
+    // console.log(file);
     if (err) {
       console.log(err);
       return;
@@ -37,8 +37,13 @@ const queryHandler = (request, response) => {
 //check what is coming through ("/search/input")
 // console.log(request.url)
 // extract the query from the url
-let query = decodeURIComponent(request.url.split('search/')[1]);
-console.log(query)
+// use regex and trim to only allow spaces, digits, letters and apostrophies to be included in the decoded string, user input
+let query = decodeURIComponent(request.url.split('search/')[1]).replace(/[^A-Za-z0-9' ]/g, "")
+.trim();
+
+console.log(query);
+
+
 // get information from json (alreday an object)
 const autocomplete = filteredObject(searchJSON(query, data));
 // return a new object, send to client
