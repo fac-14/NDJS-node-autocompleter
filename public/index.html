@@ -5,24 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>NDJS Autocompleter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/public/reset.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/public/main.css" />
 </head>
 <body>
+  <main>
     <header>
-        <h1>Autocompleter</h1>
+        <h1>Autocomplete Trump Tweet</h1>
     </header>
+      <section id="quote-display"></section>
+
     <form action="/search" method="post" id="input-form">
         <label for="search">Search:</label>
-        <input type="text" name="search" id="search" list="autocomplete" autocomplete="off" required>
+        <input type="text" name="search" id="search" placeholder="People, places, policies..." list="autocomplete" autocomplete="off" required>
         <!-- datalist addded to autogenerate a dropdown of search results under input field-->
         <!-- datalist will be poplulated with option by the javascript -->
         <datalist id="autocomplete"></datalist>
 
-        <button type="submit">Submit</button>
+        <button type="submit">Search</button>
     </form>
 
     <!-- May need to be an article? -->
-    <section id="quote-display"></section>
+
+  </main>
 
     <script src="/public/script.js"></script>
 </body>
