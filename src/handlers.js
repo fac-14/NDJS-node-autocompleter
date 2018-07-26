@@ -48,7 +48,7 @@ response.end(JSON.stringify(autocomplete))
 
 function searchJSON(query, data) {
   // search the keys with fake variable and return an array with matching results
-  const matchArray = Object.keys(data).filter(item => item.includes(query));
+  const matchArray = Object.keys(data).filter(item => item.toLowerCase().includes(query.toLowerCase()));
   // return the array with matched results
   return matchArray;
 }

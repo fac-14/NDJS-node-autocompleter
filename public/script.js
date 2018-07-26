@@ -49,7 +49,6 @@ function createLimitedArray(obj){
     console.log('else if')
     limitedArray.push('No matches found');
   }
-  console.log('returning')
   return limitedArray;
 }
 
@@ -64,5 +63,6 @@ function constructDataList(arr) {
     option.value = item;
     // data list items appended to the datalist element
     datalist.appendChild(option);
+    console.log(item);
   })
 }
