@@ -20,8 +20,7 @@ const indexHandler = (request, response) => {
 };
 
 const publicHandler = (request, response) => {
-  const type = request.url.split(".")[1];
-  response.writeHead(200, mime.lookup(type));
+  response.writeHead(200, mime.lookup(request.url));
   fs.readFile(path.join(__dirname, "..", request.url), (err, file) => {
     console.log(file);
     if (err) {
