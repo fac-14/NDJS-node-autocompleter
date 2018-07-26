@@ -1,4 +1,4 @@
-
+var datalist = document.getElementById("autocomplete");
 var searchInput = document.getElementById("search");
 
 searchInput.addEventListener('keyup', function (e){
@@ -29,12 +29,12 @@ function urlCreator (url, str){
 }
 
 function callback(obj) {
+  // empty list
+  datalist.textContent = "";
   // create array with limited length
   var array = createLimitedArray(obj);
   // convert array to html
-  var html = constructDataList(array);
-    // append html to input field
-    console.log(array);
+  constructDataList(array);
 }
 
 function createLimitedArray(obj){
@@ -42,17 +42,27 @@ function createLimitedArray(obj){
   var limitedArray = Object.keys(obj);
   // array with limited length
   if (limitedArray.length > 5) {
+    console.log("length greater than 5!")
     limitedArray = limitedArray.slice(0,5);
   } else if (limitedArray.length === 0) {
     // if object is empty
+    console.log('else if')
     limitedArray.push('No matches found');
   }
+  console.log('returning')
   return limitedArray;
 }
 
 
 function constructDataList(arr) {
-  // 
-  // data list items appended to the datalist element
+  // construct a html option tag
+  var options = "";
 
+  arr.forEach(function(item) {
+    var option = document.createElement('option');
+    // set the value of the <option>
+    option.value = item;
+    // data list items appended to the datalist element
+    datalist.appendChild(option);
+  })
 }
