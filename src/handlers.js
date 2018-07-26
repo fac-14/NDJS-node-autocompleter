@@ -23,7 +23,7 @@ const indexHandler = (request, response) => {
 const publicHandler = (request, response) => {
   response.writeHead(200, mime.lookup(request.url));
   fs.readFile(path.join(__dirname, "..", request.url), (err, file) => {
-    // console.log(file);
+    console.log(file);
     if (err) {
       console.log(err);
       return;
