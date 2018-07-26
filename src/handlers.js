@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const querystring = require("querystring");
 const mime = require("mime-types");
+const data = require("../data.json");
 
 const indexHandler = (request, response) => {
   response.writeHead(200, mime.lookup("html"));
@@ -34,16 +35,33 @@ const publicHandler = (request, response) => {
 
 const queryHandler = (request, response) => {
 //check what is coming through ("/search/input")
-  console.log(request.url)
-  let query = request.url.split('search/')[1];
-  console.log(query)
-  response.end()
+// console.log(request.url)
 // extract the query from the url
-
-// get infomation form json
-
+let query = request.url.split('search/')[1];
+console.log(query)
+// get information from json (alreday an object)
+const autocomplete = filteredObject(searchJSON(query, data));
 // return a new object, send to client
-
+response.end(JSON.stringify(autocomplete))
 };
+
+
+function searchJSON(query, data) {
+  // search the keys with fake variable and return an array with matching results
+  const matchArray = Object.keys(data).filter(item => item.includes(query));
+  // return the array with matched results
+  return matchArray;
+}
+
+function filteredObject(matches) {
+  // start with empty object
+  const newObj = {};
+  // take the array of matched keys and set it value to what's the value in the json
+  matches.forEach(item => newObj[item] = data[item])
+  // return the filled new Object
+  return newObj
+}
+
+
 
 module.exports = { indexHandler, publicHandler, queryHandler };

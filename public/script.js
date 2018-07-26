@@ -13,6 +13,7 @@ function genericXHR (url, cb) {
     xhr.onreadystatechange = function () {
         if(xhr.readyState === 4 && xhr.status === 200) {
             var parsedObj = JSON.parse(xhr.responseText);
+            console.log(parsedObj)
             return cb(parsedObj);
         } else if (xhr.readyState === 4 && xhr.status != 200) {
             console.log("sorry XHR unavailable");
@@ -31,4 +32,3 @@ function urlCreator (url, str){
 function callback() {
 console.log("testing XHR URL BLURP");
 }
-
