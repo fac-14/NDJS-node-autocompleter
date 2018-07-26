@@ -37,7 +37,7 @@ const queryHandler = (request, response) => {
 //check what is coming through ("/search/input")
 // console.log(request.url)
 // extract the query from the url
-let query = request.url.split('search/')[1];
+let query = decodeURIComponent(request.url.split('search/')[1]);
 console.log(query)
 // get information from json (alreday an object)
 const autocomplete = filteredObject(searchJSON(query, data));
@@ -48,7 +48,7 @@ response.end(JSON.stringify(autocomplete))
 
 function searchJSON(query, data) {
   // search the keys with fake variable and return an array with matching results
-  const matchArray = Object.keys(data).filter(item => item.includes(query));
+  const matchArray = Object.keys(data).filter(item => item.toLowerCase().includes(query.toLowerCase()));
   // return the array with matched results
   return matchArray;
 }
