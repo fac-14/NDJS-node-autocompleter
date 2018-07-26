@@ -1,6 +1,7 @@
 var datalist = document.getElementById("autocomplete");
 var searchInput = document.getElementById("search");
 var inputForm = document.getElementById("input-form");
+var inputField = document.getElementById("search");
 var quoteDisplay = document.getElementById("quote-display");
 var globalObj = {};
 
@@ -12,12 +13,23 @@ searchInput.addEventListener('keyup', function (e){
 });
 
 // Listen for submit, then render relevant info (as second callback)
-inputForm.addEventListener("submit", function(e){
+inputForm.addEventListener("submit", submitEventHandler);
+
+// Proxy for submitting on click - renders quotes if input field matches one of the options!
+inputField.addEventListener("input", function(e) {
+    if( globalObj[e.target.value] !== undefined ) {
+        var infoToRender = globalObj[e.target.value]
+        renderQuotes(infoToRender)
+    } ;
+});
+
+
+function submitEventHandler(e){
     e.preventDefault();
     var key = e.target[0].value
     var infoToRender = globalObj[key]
     renderQuotes(infoToRender)
-})
+}
 
 // Render function
 function renderQuotes(arr){
@@ -81,6 +93,8 @@ function constructDataList(arr) {
     var option = document.createElement('option');
     // set the value of the <option>
     option.value = item;
+    
+    
     // data list items appended to the datalist element
     datalist.appendChild(option);
   })
