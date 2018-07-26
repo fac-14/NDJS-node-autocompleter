@@ -5,12 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>NDJS Autocompleter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/public/reset.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/public/main.css" />
 </head>
 <body>
+  <main>
     <header>
-        <h1>Autocompleter</h1>
+        <h1>Autocomplete Trump Tweet</h1>
     </header>
+    <!-- svg madness ?-->
+
     <form action="/search" method="post" id="input-form">
         <label for="search">Search:</label>
         <input type="text" name="search" id="search" list="autocomplete" autocomplete="off" required>
@@ -23,6 +27,7 @@
 
     <!-- May need to be an article? -->
     <section id="quote-display"></section>
+  </main>
 
     <script src="/public/script.js"></script>
 </body>

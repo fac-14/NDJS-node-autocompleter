@@ -1,3 +1,41 @@
+body {
+  height: 100vh;
+  background-color: lightgrey;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 5vw;
+  font-weight: bold;
+}
+
+main {
+  height: 100%;
+  display:flex;
+  flex-direction: column;
+  background-image: url("./img/donald-trump.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+header,
+form,
+section {
+  margin: auto;
+}
+
+p {
+  font-size: 3vw;
+}
+
+header {
+  flex-basis: 300px;
+}
+
+#quote-display {
+
+}
+
+
 h1 {
   color: green;
+  text-transform: uppercase;
 }
