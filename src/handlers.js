@@ -10,7 +10,7 @@ const indexHandler = (request, response) => {
     path.join(__dirname, "..", "public", "index.html"),
     (err, file) => {
       if (err) {
-        console.log(`omg there's an ${err}`);
+        console.log(`500 Internal Server Error: ${err}`);
         return;
       } else {
         // err is null...
@@ -25,7 +25,7 @@ const publicHandler = (request, response) => {
   fs.readFile(path.join(__dirname, "..", request.url), (err, file) => {
     console.log(file);
     if (err) {
-      console.log(err);
+      console.log(`500 Internal Server Error: ${err}`);
       return;
     } else {
       response.end(file);
