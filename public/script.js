@@ -120,6 +120,8 @@ if(SpeechSynthesisUtterance && SpeechSynthesisUtterance){
     // Callback function to be put on speech button event listener:
     // Choose random item from array of quotes and read it out
     function randomSpeech(){
+        // cancel anthing currently being spoken
+        speechSynthesis.cancel();
         // Array of things to say
         var possibleSpeechArr = Object.values(globalObj);
 
