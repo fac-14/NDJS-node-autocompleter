@@ -4,11 +4,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 5vw;
   font-weight: bold;
+  letter-spacing: 3px;
 }
 
 main {
   height: 100%;
   display:flex;
+  align-items: center;
   flex-direction: column;
   background-image: url("./img/donald-trump.png");
   background-repeat: no-repeat;
@@ -16,30 +18,69 @@ main {
   background-size: cover;
 }
 
-header,
 form,
 section {
   margin: auto;
+  text-align: center;
 }
 
 p {
   font-size: 3vw;
+  font-family: "Comic Sans MS";
+  padding: 10px 0;
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
-header {
+/* header {
   flex-basis: 300px;
-}
+} */
 
 #quote-display {
- 
+  overflow: scroll;
 }
 
-h1 {
+h1,
+button {
   color: white;
   padding: 5px 10px;
   border: 7px solid red;
   background-color: blue;
-  mix-blend-mode: color-burn;
   text-transform: uppercase;
+}
 
+label {
+  width: 1px;
+  height: 1px;
+  color: transparent;
+}
+
+
+h1 {
+  margin-top: 10vh;
+  text-align: center;
+}
+
+form {
+  position: fixed;
+  bottom: 10vh;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+input {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 2vw;
+  margin-right: 20px;
+  padding: 10px;
+  border: 7px transparent;
+  width: 70vw;
+}
+
+button {
+  font-size: 3vw;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  letter-spacing: 3px;
 }
