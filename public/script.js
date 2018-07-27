@@ -9,7 +9,7 @@ var globalObj = {};
 searchInput.addEventListener('keyup', function (e){
     // keyup creates string which then gets encoded by urlCreator function and concatinated to url
     if(searchInput.value){
-    genericXHR(urlCreator(window.location.href, searchInput.value), callback);
+    genericXHR(urlCreator(window.location.href, searchInput.value), createListArrCallback);
     }
 });
 
@@ -20,6 +20,7 @@ inputForm.addEventListener("submit", submitEventHandler);
 inputField.addEventListener("input", function(e) {
     if( globalObj[e.target.value] !== undefined ) {
         var infoToRender = globalObj[e.target.value]
+        quoteDisplay.classList.remove("visually-hidden");
         renderQuotes(infoToRender)
         inputField.blur();
     } ;
@@ -33,6 +34,7 @@ function submitEventHandler(e){
 
     var infoToRender = globalObj[key]
     console.log(infoToRender);
+    quoteDisplay.classList.remove("visually-hidden");
     renderQuotes(infoToRender)
 }
 
@@ -69,7 +71,7 @@ function urlCreator (url, str){
     return url + "search/" + searchUri;
 }
 
-function callback(obj) {
+function createListArrCallback(obj) {
   // empty list
   datalist.textContent = "";
   // create array with limited length
