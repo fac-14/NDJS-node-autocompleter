@@ -27,7 +27,7 @@ const indexHandler = (request, response) => {
 const publicHandler = (request, response) => {
   response.writeHead(200, mime.lookup(request.url));
   fs.readFile(path.join(__dirname, "..", request.url), (err, file) => {
-    console.log(file);
+    console.log(file); 
     if (err) {
       console.log(`500 Internal Server Error: ${err}`);
       return;
@@ -65,17 +65,35 @@ function searchJSON(query, data) {
   // if the newObj.keys.length is small, run a levenshtein search
   // let countToFive = matchArray.length
 
-  const matchArrayNew = Object.keys(data).filter(x => fuzzyMatch(x.toLowerCase()))
+  const jsLevMatchArray = Object.keys(data).filter(x => jsLevMatch(x.toLowerCase()))
+  const fastLevMatchArray = Object.keys(data).filter(x => fastLev(x.toLowerCase()))
+  const notLevMatchArray = Object.keys(data).filter(x => notLev(x.toLowerCase()))
 
-  function fuzzyMatch(arrItem){
-    return levenshtein(arrItem, query) <= 5;
+  // js-lev
+  function jsLevMatch(arrItem){
+    return levenshtein(arrItem, query) <= 3;
   }
 
-  if(matchArray.length == 0){
-    matchArray = matchArrayNew;
+  // fast-lev
+  function fastLev(arrItem){
+    return fastLevenshtein.get(arrItem, query) <= 3;
+  }
+
+  // not-lev (stringSimilarity)
+  function notLev(arrItem){
+    // console.log(`not-lev analysis: ${stringSimilarity.compareTwoStrings("Amazon", query)}`)
+    return stringSimilarity.compareTwoStrings(arrItem, query) >= 0.25;
+  }
+
+  if(matchArray.length <= 4){
+    console.log(`jsLev: ${jsLevMatchArray}`);
+    console.log(`fastLev: ${fastLevMatchArray}`);
+    console.log(`notLev: ${notLevMatchArray}`);
+    console.log(`best match obj: ${stringSimilarity.findBestMatch(query, Object.keys(data)).bestMatch.target}`)
   } else if (matchArray.length <= 3){
+    // never runs for now - just testing the if statement above
     console.log("uh oh")
-    matchArray.concat(matchArrayNew)
+    matchArray.concat(jsLevMatchArray)
   }
 
   console.log(matchArray);
