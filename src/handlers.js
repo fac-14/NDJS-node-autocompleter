@@ -56,7 +56,43 @@ response.end(JSON.stringify(autocomplete))
 
 function searchJSON(query, data) {
   // search the keys with fake variable and return an array with matching results
-  const matchArray = Object.keys(data).filter(item => item.toLowerCase().includes(query.toLowerCase()));
+  let matchArray = Object.keys(data).filter(item => item.toLowerCase().includes(query.toLowerCase()));
+
+  // VVV TYPO HANDLING MAGIC BELOW VVV
+  // Also changed matchArray to a let from const
+
+  // if no matches found...
+  if(matchArray.length == 0){
+    console.log("first if");
+    matchArray = Object.keys(data).filter(x => jsLevMatch(x.toLowerCase()));
+  }
+
+  //function for first if filter
+  function jsLevMatch(arrItem){
+      return levenshtein(arrItem, query) <= 3;
+  }
+
+  // if still no matches!
+  if(matchArray.length == 0){
+    console.log("second if");
+    matchArray = notLevMatchArray = Object.keys(data).filter(x => notLev(x.toLowerCase()));
+  }
+  
+  // function for second if filter
+  function notLev(arrItem){
+    return stringSimilarity.compareTwoStrings(arrItem, query) >= 0.25;
+  }
+
+  // if STILL no matches, return best match
+  if(matchArray.length == 0){
+    console.log("third if");
+    matchArray.push(stringSimilarity.findBestMatch(query, Object.keys(data)).bestMatch.target)
+  }
+
+
+  // ^^^ TYPO HANDLING MAGIC ABOVE (kws: levenshtein string match) ^^^
+
+
   // return the array with matched results
   return matchArray;
 }
