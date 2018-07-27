@@ -100,6 +100,7 @@ function constructDataList(arr) {
     var option = document.createElement('option');
     // set the value of the <option>
     option.value = item;
+    option.innerText = item;
     
     
     // data list items appended to the datalist element
