@@ -58,7 +58,7 @@ h1 {
 
 form {
   position: fixed;
-  bottom: 10vh;
+  bottom: 15vh;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
