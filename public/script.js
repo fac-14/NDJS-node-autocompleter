@@ -20,6 +20,7 @@ inputForm.addEventListener("submit", submitEventHandler);
 inputField.addEventListener("input", function(e) {
     if( globalObj[e.target.value] !== undefined ) {
         var infoToRender = globalObj[e.target.value]
+        quoteDisplay.classList.remove("visually-hidden");
         renderQuotes(infoToRender)
         inputField.blur();
     } ;
@@ -33,6 +34,7 @@ function submitEventHandler(e){
 
     var infoToRender = globalObj[key]
     console.log(infoToRender);
+    quoteDisplay.classList.remove("visually-hidden");
     renderQuotes(infoToRender)
 }
 
