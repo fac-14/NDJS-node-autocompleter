@@ -9,7 +9,7 @@ var globalObj = {};
 searchInput.addEventListener('keyup', function (e){
     // keyup creates string which then gets encoded by urlCreator function and concatinated to url
     if(searchInput.value){
-    genericXHR(urlCreator(window.location.href, searchInput.value), callback);
+    genericXHR(urlCreator(window.location.href, searchInput.value), createListArrCallback);
     }
 });
 
@@ -69,7 +69,7 @@ function urlCreator (url, str){
     return url + "search/" + searchUri;
 }
 
-function callback(obj) {
+function createListArrCallback(obj) {
   // empty list
   datalist.textContent = "";
   // create array with limited length
