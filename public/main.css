@@ -18,6 +18,10 @@ main {
   background-size: cover;
 }
 
+header {
+  margin: 0 2%; 
+}
+
 form,
 section {
   margin: auto;
