@@ -4,6 +4,9 @@ const querystring = require("querystring");
 const mime = require("mime-types");
 const data = require("../data.json");
 
+const stringSimilarity = require('string-similarity');
+const levenshtein = require('js-levenshtein');
+
 const indexHandler = (request, response) => {
   response.writeHead(200, mime.lookup("html"));
   fs.readFile(

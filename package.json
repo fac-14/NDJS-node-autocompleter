@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/fac-14/NDJS-node-autocompleter#readme",
   "dependencies": {
-    "mime-types": "^2.1.19"
+    "js-levenshtein": "^1.1.3",
+    "mime-types": "^2.1.19",
+    "string-similarity": "^1.2.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.3",
